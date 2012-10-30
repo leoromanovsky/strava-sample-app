@@ -7,11 +7,25 @@ class OAuthsController < ApplicationController
         parse: :json
       }
 
-      client = OAuth2::Client.new(12, 'd9c1cd4f3e3c1e18dd07af69eb7c87299ea93ef8', client_options)
+      client = OAuth2::Client.new(10, '3eeaa2afb05e3feb66e092f558e940769dbf65ff', client_options)
       authorization = client.auth_code.get_token(params[:code])
-      puts "AUTH #{authorization.inspect}"
-    end
 
+      token = OAuth2::AccessToken.new(
+        client,
+        authorization.token,
+        param_name: :access_token,
+        mode: :query
+      )
+
+      puts "AUTH #{authorization.inspect}"
+      myself = token.get('/api/v3/athlete').parsed
+      puts "MYSELF #{myself}"
+
+      @athlete = myself
+
+    end
+  else
+    @error = params[:error]
   end
 
 end
