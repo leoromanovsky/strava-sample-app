@@ -1,0 +1,4 @@
+%h1 Leo's awesome application
+
+%p= link_to('Login with Strava', "#{Settings.strava.host}/oauth/authorize?response_type=code&state=authorize_leo_app&client_id=#{Settings.strava.app_id}&redirect_uri=#{strava_o_auth_url}&scope=write+view_private")
+
