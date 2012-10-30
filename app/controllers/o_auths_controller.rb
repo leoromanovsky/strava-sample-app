@@ -13,8 +13,18 @@ class OAuthsController < ApplicationController
         mode: :query)
 
       myself = token.get('/api/v3/athlete').parsed
+      myself = myself.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
-      @athlete = myself
+      # create user if they do not exist.
+      user = User.find_or_create_by_strava_uid(myself[:id])
+      user.strava_oauth = authorization.token
+      user.firstname = myself[:firstname]
+      user.lastname = myself[:lastname]
+      user.profile_picture = myself[:profile]
+      user.save
+
+      # redirect to the user's profile
+      redirect_to(user_path(user))
     end
   else
     @error = params[:error]

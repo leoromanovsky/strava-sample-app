@@ -11,12 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030225050) do
+ActiveRecord::Schema.define(:version => 20121030231820) do
 
   create_table "users", :force => true do |t|
     t.string   "strava_oauth"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "strava_uid"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "profile_picture"
+    t.integer  "recent_ride_totals"
+    t.integer  "recent_run_totals"
   end
 
 end

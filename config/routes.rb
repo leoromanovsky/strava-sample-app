@@ -5,5 +5,7 @@ SampleApp::Application.routes.draw do
     end
   end
 
+  resources :users, only: [:show]
+
   root :to => 'website#home'
 end
