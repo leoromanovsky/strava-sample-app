@@ -1,3 +1,4 @@
 strava:
-  app_id: 11
+  host: http://localhost:3000
+  app_id: 10
   app_secret: 3eeaa2afb05e3feb66e092f558e940769dbf65ff

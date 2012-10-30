@@ -1,7 +1,7 @@
 class OAuthsController < ApplicationController
   def strava
     if params[:code]
-      client_options = {site: 'http://dev.strava.com', parse: :json}
+      client_options = {site: Settings.strava.host, parse: :json}
 
       client = OAuth2::Client.new(Settings.strava.app_id, Settings.strava.app_secret, client_options)
       authorization = client.auth_code.get_token(params[:code])

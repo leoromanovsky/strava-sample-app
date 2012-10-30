@@ -1,3 +1,4 @@
 strava:
+  host: http://dev.strava.com
   app_id: 10
   app_secret: 4c5b10139c138f5b2079cd037c19b91d3a8ccce4
