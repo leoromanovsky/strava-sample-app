@@ -16,7 +16,7 @@ class OAuthsController < ApplicationController
       myself = myself.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
       # create user if they do not exist.
-      user = User.find_or_create_by_strava_uid(myself[:id])
+      user = User.find_or_create_by_strava_uid(myself[:id].to_s)
       user.strava_oauth = authorization.token
       user.firstname = myself[:firstname]
       user.lastname = myself[:lastname]
