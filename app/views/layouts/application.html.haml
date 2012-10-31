@@ -11,7 +11,12 @@
         %ul.nav
           %li.active= link_to('Home', root_path)
           %li
-            %a= "#{@num_users} people have signed up!"
+            - if @num_users == 0
+              %a= "Be the first to sign up!"
+            - elsif @num_users == 1
+              %a= "#{@num_users} person has signed up!"
+            - else
+              %a= "#{@num_users} people have signed up!"
 
     .container
       .row
