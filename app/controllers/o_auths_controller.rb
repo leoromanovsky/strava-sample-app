@@ -24,9 +24,7 @@ class OAuthsController < ApplicationController
       user.save
 
       # update the user count cache
-      Rails.cache.write('num_users') do
-        User.count
-      end
+      Rails.cache.write('num_users', User.count)
 
       # redirect to the user's profile
       redirect_to(user_path(user))
