@@ -25,8 +25,10 @@ class OAuthsController < ApplicationController
 
       # redirect to the user's profile
       redirect_to(user_path(user))
+    else
+      @error = params[:error]
     end
-  else
-    @error = params[:error]
+  rescue OAuth2::Error => e
+    @error = e
   end
 end
