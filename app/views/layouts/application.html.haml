@@ -10,6 +10,8 @@
         %a.brand Leo's Awesome App
         %ul.nav
           %li.active= link_to('Home', root_path)
+          %li
+            %a= "#{@num_users} people have signed up!"
 
     .container
       .row

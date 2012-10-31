@@ -23,6 +23,11 @@ class OAuthsController < ApplicationController
       user.profile_picture = myself[:profile]
       user.save
 
+      # update the user count cache
+      Rails.cache.write('num_users') do
+        User.count
+      end
+
       # redirect to the user's profile
       redirect_to(user_path(user))
     else
