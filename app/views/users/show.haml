@@ -1,4 +1,5 @@
-%p= "Hi #{@user.firstname}"
+%h1= "Hi #{@user.firstname}, you've connected to the Strava API!"
+%p That's it for this sample app for now.
 %img{src: @user.profile_picture}
 
 %p= link_to('Go back home.', root_path)
