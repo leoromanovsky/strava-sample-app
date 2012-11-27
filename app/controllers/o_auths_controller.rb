@@ -34,4 +34,41 @@ class OAuthsController < ApplicationController
   rescue OAuth2::Error => e
     @error = e
   end
+
+  def instagram
+    client_options = {
+      site: Settings.instagram.host,
+      redirect_uri: instagram_o_auth_url,
+      authorize_url: '/oauth/authorize',
+      token_url: '/oauth/access_token',
+      parse: :json}
+    client = OAuth2::Client.new(Settings.instagram.client_id, Settings.instagram.client_secret, client_options)
+    authorization = client.auth_code.get_token(
+      params[:code],
+      redirect_uri: instagram_o_auth_url,
+      parse: :json)
+
+    user = User.find(1)
+    user.instagram_access_token =  authorization.token
+    user.instagram_uid = authorization['user']['id']
+    user.instagram_username = authorization['user']['username']
+    user.save!
+
+    redirect_to(user_path(user))
+  rescue OAuth2::Error => e
+    puts e.inspect
+  end
+
+  private
+
+  # Generates an authorization URL.
+  def authorize_url
+    authorization_parameters = {
+      response_type: 'code',
+      redirect_uri:  instagram_o_auth_url,
+      state:         'authorize_strava',
+      access_type:   'offline'
+    }
+    config.auth_code.authorize_url(authorization_parameters)
+  end
 end

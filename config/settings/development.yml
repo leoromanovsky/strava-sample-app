@@ -2,3 +2,8 @@ strava:
   host: http://localhost:3000
   app_id: 10
   app_secret: 3eeaa2afb05e3feb66e092f558e940769dbf65ff
+
+instagram:
+  host: https://api.instagram.com
+  client_id: 848e3ee9034e44009ec58945dcebcb63
+  client_secret: 5b789bdf056b4a7aa63442cd3664d118
