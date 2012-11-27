@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 
 gem 'haml'
+gem 'httparty'
 gem 'jquery-rails'
 gem 'oauth2'
 gem 'rails_config'

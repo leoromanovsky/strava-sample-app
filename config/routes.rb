@@ -3,6 +3,8 @@ SampleApp::Application.routes.draw do
     member do
       get :strava
       get :instagram
+      get :instagram_initiate_pubsub
+      get :instagram_pubsub_callback
     end
   end
 

@@ -71,4 +71,25 @@ class OAuthsController < ApplicationController
     }
     config.auth_code.authorize_url(authorization_parameters)
   end
+
+  def instagram_initiate_pubsub
+    options = {
+      body: {
+        client_id: Settings.instagram.client_id,
+        client_secret: Settings.instagram.client_secret,
+        object: :user,
+        aspect: :media,
+        verify_token: :myVerifyToken,
+        callback_url: "#{Settings.host}#{instagram_pubsub_callback_o_auth_path}"
+      }
+    }
+    HTTParty.post('https://api.instagram.com/v1/subscriptions', options)
+  end
+
+  def instagram_pubsub_callback
+    mode = params['hub.mode']
+    challenge = params['hub.challenge']
+    verify_token = params['hub.verify_token']
+    render(text: challenge)
+  end
 end
