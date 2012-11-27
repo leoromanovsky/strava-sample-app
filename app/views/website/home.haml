@@ -2,4 +2,4 @@
   = link_to(image_tag('connect-with-strava-large.png'), "#{Settings.strava.host}/oauth/authorize?approval_prompt=force&response_type=code&state=authorize_strava_sample_app&client_id=#{Settings.strava.app_id}&redirect_uri=#{strava_o_auth_url}&scope=write+view_private")
 
 %p
-  = link_to('Connect with Instagram', "#{Settings.instagram.host}/oauth/authorize?client_id=#{Settings.instagram.client_id}&redirect_uri=#{instagram_o_auth_url}&response_type=code&state=foo&access_type=offline--")
+  = link_to('Connect with Instagram', "#{Settings.instagram.host}/oauth/authorize?client_id=#{Settings.instagram.client_id}&redirect_uri=#{Settings.host}#{instagram_o_auth_path}&response_type=code&state=foo&access_type=offline--")

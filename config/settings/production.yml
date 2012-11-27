@@ -1,3 +1,5 @@
+host: https://strava-sample-app.com
+
 strava:
   host: https://strava.com
   app_id: 16

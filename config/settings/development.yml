@@ -1,3 +1,5 @@
+host: http://localhost:3001
+
 strava:
   host: http://localhost:3000
   app_id: 10
