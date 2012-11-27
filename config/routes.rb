@@ -5,6 +5,7 @@ SampleApp::Application.routes.draw do
       get :instagram
       get :instagram_initiate_pubsub
       get :instagram_pubsub_callback
+      post :instagram_pubsub_callback
     end
   end
 

@@ -61,7 +61,7 @@ class OAuthsController < ApplicationController
 
   def instagram_initiate_pubsub
     options = {
-        body: {
+      body: {
         client_id: Settings.instagram.client_id,
         client_secret: Settings.instagram.client_secret,
         object: :user,
@@ -75,10 +75,14 @@ class OAuthsController < ApplicationController
   end
 
   def instagram_pubsub_callback
-    mode = params['hub.mode']
-    challenge = params['hub.challenge']
-    verify_token = params['hub.verify_token']
-    render(text: challenge)
+    if request.get?
+      mode = params['hub.mode']
+      challenge = params['hub.challenge']
+      verify_token = params['hub.verify_token']
+      render(text: challenge) and return
+    else
+      puts "PUT REQUEST #{params}"
+    end
   end
 
   private
