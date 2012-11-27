@@ -1,4 +1,4 @@
-host: https://strava-sample-app.com
+host: https://strava-sample-app.herokuapp.com
 
 strava:
   host: https://strava.com
