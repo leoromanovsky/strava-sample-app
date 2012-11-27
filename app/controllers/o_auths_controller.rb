@@ -81,7 +81,14 @@ class OAuthsController < ApplicationController
       verify_token = params['hub.verify_token']
       render(text: challenge) and return
     else
-      puts "PUT REQUEST #{params}"
+      #puts "POST REQUEST #{params}"
+      data = params['_json']
+
+      data.each do |media|
+        puts "MEDIA #{media}"
+      end
+
+      render(text: 'OK') and return
     end
   end
 
