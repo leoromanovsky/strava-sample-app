@@ -45,7 +45,7 @@ class OAuthsController < ApplicationController
     client = OAuth2::Client.new(Settings.instagram.client_id, Settings.instagram.client_secret, client_options)
     authorization = client.auth_code.get_token(
       params[:code],
-      redirect_uri: instagram_o_auth_url,
+      redirect_uri: "#{Settings.host}#{instagram_o_auth_path}",
       parse: :json)
 
     user = User.find(1)
