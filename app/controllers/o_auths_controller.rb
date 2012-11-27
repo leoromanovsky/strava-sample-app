@@ -68,9 +68,10 @@ class OAuthsController < ApplicationController
         aspect: :media,
         verify_token: :myVerifyToken,
         callback_url: "#{Settings.host}#{instagram_pubsub_callback_o_auth_path}"
+      }
     }
-    }
-    HTTParty.post('https://api.instagram.com/v1/subscriptions', options)
+    response = HTTParty.post('https://api.instagram.com/v1/subscriptions', options)
+    puts response.body, response.code, response.message, response.headers.inspect
   end
 
   def instagram_pubsub_callback
