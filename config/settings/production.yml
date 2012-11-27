@@ -2,3 +2,8 @@ strava:
   host: https://strava.com
   app_id: 16
   app_secret: 9290f37fc2ca5f57553ba3b16c2a77709743e6b9
+
+nstagram:
+  host: https://api.instagram.com
+  client_id: 67ec7c87f2994718b85e520ecc65cd29
+  client_secret: 27745e31f0cf4c0591433700aa32c871
